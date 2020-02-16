@@ -3,6 +3,7 @@ import 'package:QuoteIt/views/quote_list.dart';
 import 'package:QuoteIt/views/thought_list.dart';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,6 +34,7 @@ class HomePage extends State<MyApp>{
   Widget build(BuildContext context) {
     return MaterialApp(
         title: "Quote",
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: dark ? Brightness.dark  : Brightness.light,
           primaryColor: dark ? Colors.grey[900] : Colors.blue,
@@ -44,8 +46,31 @@ class HomePage extends State<MyApp>{
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh), 
-            onPressed: (){}
-            
+            onPressed: (){
+              Fluttertoast.showToast(
+                msg: "Refreshing......",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+              );
+              if(_currentIndex == 0){
+              setState(() {
+                  _currentIndex = 1;
+                });
+                setState(() {
+                  _currentIndex = 0;
+                });
+              }
+              else{
+                _currentIndex = 0;
+                setState(() {
+                  
+                });
+                _currentIndex = 1;
+                setState((){
+                  
+                });
+              }
+            }            
           ),
         ],
       ),

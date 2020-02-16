@@ -36,11 +36,25 @@ class _ThoughtListState extends State<ThoughtList> {
 
   @override
   Widget build(BuildContext context) {
+    if (quoteData == null) {
+      return Center(
+          child: Text(
+            "Wow, Such empty...Loading",
+            style: TextStyle(
+              fontSize: 22.0,
+              color: Colors.grey,
+            ),
+          ),
+        );
+      
+    }
+    else{
     return Container(
       child: ListView.builder(
-        itemCount: quoteData == null ? 0 : quoteData.length,
+        itemCount: quoteData.length,
         itemBuilder: (BuildContext context, int index ){
-          return Padding(
+      
+            return Padding(
             padding: const EdgeInsets.only(left: 4, top: 4, right: 4),
             child: Card(
               child: Column(
@@ -80,9 +94,11 @@ class _ThoughtListState extends State<ThoughtList> {
               ),
             ),
           );
+          
         } 
       ),
       
     );
+    }
   }
 }
