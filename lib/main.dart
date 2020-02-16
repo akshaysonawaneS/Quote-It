@@ -1,6 +1,7 @@
 
 import 'package:QuoteIt/views/quote_list.dart';
 import 'package:QuoteIt/views/thought_list.dart';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -21,7 +22,7 @@ class HomePage extends State<MyApp>{
   Widget callPage(int currentIndex){
       switch(currentIndex){
         case 0:return QuoteList();
-        case 1:return Thoughtlist();
+        case 1:return ThoughtList();
 
         default:return QuoteList();
       }
@@ -39,7 +40,14 @@ class HomePage extends State<MyApp>{
         ),
         home: Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Quote IT")),
+        title: Text("Quote IT"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.refresh), 
+            onPressed: (){}
+            
+          ),
+        ],
       ),
       body: callPage(_currentIndex),
       floatingActionButton: FloatingActionButton(
